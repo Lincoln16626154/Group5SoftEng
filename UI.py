@@ -1,4 +1,4 @@
-from tkinter import Tk, Label, Button, Entry, IntVar, END, W, E
+from tkinter import Tk, Label, Button, Entry, IntVar, END, W, E, Radiobutton
 
 class GUI:
     def __init__(self, master):
@@ -11,7 +11,8 @@ class GUI:
         
         self.exampleButton = Button(master, text="This is button", command=self.buttonFunction)
         
-
+        self.exampleRadioBtn = Radiobutton(master, text="This is a radio button", value = 1)
+        self.exampleRadioBtn2 = Radiobutton(master, text="This is another radio button", value = 2)
 
 # LAYOUT
 
@@ -21,7 +22,8 @@ class GUI:
 
         self.exampleButton.grid(row=2, column=0)
 
-
+        self.exampleRadioBtn.grid(row=3, column = 0)
+        self.exampleRadioBtn2.grid(row=4, column = 0)
 
     def buttonFunction(self):
         print("button function called")
