@@ -11,4 +11,8 @@ def getTitles(filename):
                 text_ocurrences.append(match.group(2))
     return text_ocurrences
     
-print(getTitles('data_file2.json'))
+def getTitlesFromData(data):
+    text_ocurrences=[] 
+    for item in data['articles']:
+            text_ocurrences.append(item['title'])
+    return text_ocurrences
