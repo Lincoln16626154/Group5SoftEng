@@ -12,11 +12,7 @@ def getTitles(filename):
     return text_ocurrences
     
 def getTitlesFromData(data):
-    print(data)
-    regex_chain = re.compile(r'(title)": "(.*)"')
     text_ocurrences=[] 
-    for line in data:
-        match = regex_chain.search(line)
-        if match:
-            text_ocurrences.append(match.group(2))
+    for item in data['articles']:
+            text_ocurrences.append(item['title'])
     return text_ocurrences
