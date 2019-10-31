@@ -28,9 +28,17 @@ class GUI:
         self.exampleRadioBtn2.grid(row=4, column = 0)
 
     def buttonFunction(self):
-        print(getTitles('data_file2.json'))
+        txt = self.exampleTextInput.get()
+        print(txt)
+        
 
-
+with open('data_file2.json'):
+    for line in file.readlines:
+        getTitles()
+       if x = re.search(txt):
+            print("yes")
+        else:
+            print("no")
 
 
 
