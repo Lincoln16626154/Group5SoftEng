@@ -1,5 +1,5 @@
 from tkinter import Tk, Label, Button, Entry, IntVar, END, W, E, Radiobutton
-
+from findTitles import getTitles
 
 
 class GUI:
@@ -28,7 +28,7 @@ class GUI:
         self.exampleRadioBtn2.grid(row=4, column = 0)
 
     def buttonFunction(self):
-        print("button function called")
+        print(getTitles('data_file2.json'))
 
 
 
