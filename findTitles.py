@@ -11,4 +11,12 @@ def getTitles(filename):
                 text_ocurrences.append(match.group(2))
     return text_ocurrences
     
-print(getTitles('data_file2.json'))
+def getTitlesFromData(data):
+    print(data)
+    regex_chain = re.compile(r'(title)": "(.*)"')
+    text_ocurrences=[] 
+    for line in data:
+        match = regex_chain.search(line)
+        if match:
+            text_ocurrences.append(match.group(2))
+    return text_ocurrences
