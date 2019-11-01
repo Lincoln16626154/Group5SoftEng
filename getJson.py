@@ -2,9 +2,21 @@ import requests
 import json
 from findTitles import getTitlesFromData
 
-key = "cb8a243e53e042ceb003054dabdda67c"
-URL = "https://newsapi.org/v2/everything?q=bitcoin&from=2019-09-30&sortBy=publishedAt&apiKey=" + key
-r = requests.get(url = URL) 
-  
-data = r.json() 
-print(getTitlesFromData(data))
+
+def makeRequest(keywords = ""):
+    key = "cb8a243e53e042ceb003054dabdda67c"
+    URL = "https://newsapi.org/v2/everything?apiKey=" + key + "&qInTitle=" + keywords + "&language=en"  
+    response = requests.get(url = URL)    
+    responseData = response.json() 
+    if errorHandling(responseData):
+        return "ERROR: Keyword Required"
+    else:
+        return getTitlesFromData(responseData)
+
+
+def errorHandling(response):
+    if response['status'] == "error":
+        print("\n\n\n" + "ERROR:   " + response['message'] + "\n\n\n")
+        return True
+    else:
+        return False
