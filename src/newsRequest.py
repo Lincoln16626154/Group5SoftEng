@@ -1,6 +1,5 @@
 import requests
 import json
-from findTitles import getTitlesFromData
 
 
 def makeRequest(keywords = ""):
@@ -11,7 +10,7 @@ def makeRequest(keywords = ""):
     if errorHandling(responseData):
         return "ERROR: Keyword Required"
     else:
-        return getTitlesFromData(responseData)
+        return getTitles(responseData)
 
 
 def errorHandling(response):
@@ -20,3 +19,10 @@ def errorHandling(response):
         return True
     else:
         return False
+
+
+def getTitles(data):
+    text_ocurrences=[] 
+    for item in data['articles']:
+            text_ocurrences.append(item['title'])
+    return text_ocurrences
