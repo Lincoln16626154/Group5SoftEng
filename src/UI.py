@@ -6,12 +6,6 @@ class GUI:
         self.master = master
         master.title("The Application Title")
 
-        self.keywordLabel = Label(master, text="Enter Keywords seperated by spaces")       
-        self.keywordLabel.pack()
-
-        self.keywordInput = Entry(master)
-        self.keywordInput.pack()
-
         self.generateHeadlines = Button(master, text="Generate", command=self.generateHeadlines)
         self.generateHeadlines.pack()
 
@@ -23,8 +17,7 @@ class GUI:
         
 
     def generateHeadlines(self): 
-        keyword = self.keywordInput.get()     
-        headlines = makeRequest(keyword)
+        headlines = makeRequest()
         self.headlines['text'] = ""
         for item in headlines:
             self.headlines['text'] += item + "\n"
