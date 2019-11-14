@@ -2,9 +2,11 @@ import requests
 import json
 
 
-def makeRequest(keywords = ""):
+def makeRequest(keywords, IDs):
     key = "cb8a243e53e042ceb003054dabdda67c"
-    URL = "https://newsapi.org/v2/everything?apiKey=" + key + "&q=" + keywords + "&language=en"  
+    URL = "http://newsapi.org/v2/everything?apiKey=" + key + "&q=" + keywords + "&language=en" + "&sources="
+    for item in IDs:
+        URL = URL + item + "," 
     response = requests.get(url = URL)    
     responseData = response.json() 
     if errorHandling(responseData):
@@ -37,7 +39,7 @@ def parseSources(data):
 
 def getNewsSources():
     key = "cb8a243e53e042ceb003054dabdda67c"
-    URL = "https://newsapi.org/v2/sources?apiKey=" + key + "&country=gb"  + "&language=en"  
+    URL = "http://newsapi.org/v2/sources?apiKey=" + key + "&country=gb"  + "&language=en"  
     response = requests.get(url = URL)    
     responseData = response.json() 
     if errorHandling(responseData):

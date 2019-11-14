@@ -40,21 +40,28 @@ class GUI:
         
         self.getSources()
 
+    newsSources = []
+    
     def getSources(self):
-        newsSources = getNewsSources()
-        self.check0['text'] = newsSources[1][0]
-        self.check1['text'] = newsSources[1][2]
-        self.check2['text'] = newsSources[1][4]
-        self.check3['text'] = newsSources[1][5]
+        self.newsSources = getNewsSources()
+        self.check0['text'] = self.newsSources[1][0]
+        self.check1['text'] = self.newsSources[1][1]
+        self.check2['text'] = self.newsSources[1][2]
+        self.check3['text'] = self.newsSources[1][3]
 
-    def generateHeadlines(self): 
+    def checksources(self):
+        IDs = []
+        for i in range (4):
+            if self.sourceSelection[i].get() == 1:
+                IDs.append(self.newsSources[0][i])
+        return IDs
+
+    def generateHeadlines(self):       
         keyword = self.keywordInput.get()     
-        headlines = makeRequest(keyword)
+        headlines = makeRequest(keyword, self.checksources())
         self.headlines['text'] = ""
         for item in headlines:
             self.headlines['text'] += item + "\n"
-
-        
 
 def checkKeywords():
     # txt = self.exampleTextInput.get()
