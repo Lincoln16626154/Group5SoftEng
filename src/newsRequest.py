@@ -1,17 +1,15 @@
 import requests
 import json
 
-
-def makeRequest(keywords = ""):
+def makeRequest():
     key = "cb8a243e53e042ceb003054dabdda67c"
-    URL = "https://newsapi.org/v2/everything?apiKey=" + key + "&q=" + keywords + "&language=en"  
+    URL = "https://newsapi.org/v2/top-headlines?apiKey=" + key + "&language=en"  
     response = requests.get(url = URL)    
     responseData = response.json() 
     if errorHandling(responseData):
-        return "ERROR: Keyword Required"
+        return {"See Console for Details", "ERROR: Failed to retrieve headlines"}
     else:
         return getTitles(responseData)
-
 
 def errorHandling(response):
     if response['status'] == "error":
@@ -19,7 +17,6 @@ def errorHandling(response):
         return True
     else:
         return False
-
 
 def getTitles(data):
     text_ocurrences=[] 
