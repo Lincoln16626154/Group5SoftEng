@@ -50,9 +50,8 @@ class GUI:
                 IDs.append(self.newsSources[0][i])
         return IDs
 
-    def generateHeadlines(self):
-        keyword = self.keywordInput.get()     
-        headlines = makeRequest(keyword, self.checksources())
+    def generateHeadlines(self): 
+        headlines = makeRequest(self.checksources())
         self.headlines['text'] = ""
         for item in headlines:
             self.headlines['text'] += item + "\n"
