@@ -6,12 +6,6 @@ class GUI:
         self.master = master
         master.title("The Application Title")
 
-        self.keywordLabel = Label(master, text="Enter Keywords seperated by spaces")       
-        self.keywordLabel.pack()
-
-        self.keywordInput = Entry(master)
-        self.keywordInput.pack()
-
         self.sourceSelection = [IntVar(),IntVar(),IntVar(),IntVar()]
 
         self.sourcesLabel = Label(master, text="Select news sources")
@@ -28,7 +22,7 @@ class GUI:
 
         self.check3 = Checkbutton(master, text="Source D", variable=self.sourceSelection[3])
         self.check3.pack()
-
+        
         self.generateHeadlines = Button(master, text="Generate", command=self.generateHeadlines)
         self.generateHeadlines.pack()
 
@@ -56,7 +50,7 @@ class GUI:
                 IDs.append(self.newsSources[0][i])
         return IDs
 
-    def generateHeadlines(self):       
+    def generateHeadlines(self):
         keyword = self.keywordInput.get()     
         headlines = makeRequest(keyword, self.checksources())
         self.headlines['text'] = ""
