@@ -1,5 +1,6 @@
 from tkinter import *
 from newsRequest import makeRequest, getNewsSources
+from musicGeneration import genSpotify
 
 class GUI:
     def __init__(self, master):
@@ -52,9 +53,10 @@ class GUI:
 
     def generateHeadlines(self): 
         headlines = makeRequest(self.checksources())
-        self.headlines['text'] = ""
+        strHeadline = ''
         for item in headlines:
-            self.headlines['text'] += item + "\n"
+            strHeadline += item + ' '
+        self.headlineLabel['text'] = genSpotify(strHeadline)
 
 def checkKeywords():
     # txt = self.exampleTextInput.get()
