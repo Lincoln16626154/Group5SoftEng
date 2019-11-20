@@ -61,20 +61,6 @@ class GUI:
         for item in tracks:
             self.tracks['text'] += item + "\n"
 
-def checkKeywords():
-    # txt = self.exampleTextInput.get()
-    # print(txt)
-    with open('data_file2.json'):
-        for line in file.readlines:
-            getTitles()
-        if x == re.search(txt):
-            print("yes")
-        else:
-            print("no")
-
-
-
-
 root = Tk()
 my_gui = GUI(root)
 root.mainloop()
