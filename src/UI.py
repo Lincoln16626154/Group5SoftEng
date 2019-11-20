@@ -1,6 +1,8 @@
 from tkinter import *
 from newsRequest import makeRequest, getNewsSources
 from musicGeneration import genSpotify
+import subprocess
+subprocess.call([r'..\setup.bat'])
 
 class GUI:
     def __init__(self, master):
