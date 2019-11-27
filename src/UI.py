@@ -1,5 +1,6 @@
 from tkinter import *
 from newsRequest import makeRequest, getNewsSources
+from musicGeneration import genSpotify
 
 class GUI:
     def __init__(self, master):
@@ -23,14 +24,14 @@ class GUI:
         self.check3 = Checkbutton(master, text="Source D", variable=self.sourceSelection[3])
         self.check3.pack()
         
-        self.generateHeadlines = Button(master, text="Generate", command=self.generateHeadlines)
-        self.generateHeadlines.pack()
+        self.generateTracks = Button(master, text="Generate", command=self.generateTracks)
+        self.generateTracks.pack()
 
-        self.headlineLabel = Label(master, text="Headlines:")
-        self.headlineLabel.pack()
+        self.trackLabel = Label(master, text="Tracks:")
+        self.trackLabel.pack()
 
-        self.headlines = Label(master, text="")
-        self.headlines.pack()
+        self.tracks = Label(master, text="")
+        self.tracks.pack()
         
         self.getSources()
 
@@ -50,25 +51,15 @@ class GUI:
                 IDs.append(self.newsSources[0][i])
         return IDs
 
-    def generateHeadlines(self): 
+    def generateTracks(self): 
         headlines = makeRequest(self.checksources())
-        self.headlines['text'] = ""
+        strHeadline = ''
         for item in headlines:
-            self.headlines['text'] += item + "\n"
-
-def checkKeywords():
-    # txt = self.exampleTextInput.get()
-    # print(txt)
-    with open('data_file2.json'):
-        for line in file.readlines:
-            getTitles()
-        if x == re.search(txt):
-            print("yes")
-        else:
-            print("no")
-
-
-
+            strHeadline += item + ' '
+        tracks = genSpotify(strHeadline)
+        self.tracks['text'] = ""
+        for item in tracks:
+            self.tracks['text'] += item + "\n"
 
 root = Tk()
 my_gui = GUI(root)
